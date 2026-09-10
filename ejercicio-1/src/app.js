@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3100;
 
-app.get('/api/iva/:monto', (req, res) => {
+app.get('/api/calcular/:monto', (req, res) => {
     try {
         const monto = Number(req.params.monto);
 
