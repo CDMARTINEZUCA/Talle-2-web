@@ -36,7 +36,7 @@ app.get("/api/envios", (req, res) => {
       fee = 3.0;
       break;
     case "panama":
-      fee = 3.5; 
+      fee = 3.5;
       break;
     default:
       return res.status(400).json({ message: "Not a valid country" });
@@ -52,17 +52,17 @@ app.get("/api/envios", (req, res) => {
 
     if (w > 20) {
       discount = 0.1;
-      total = baseamount * (1 - discount)
+      total = baseamount * (1 - discount);
     } else if (w < 1) {
       surcharge = 5.0;
-      total = baseamount + surcharge
+      total = baseamount + surcharge;
     } else total = baseamount;
-    return{
-        baseamount,
-        discount,
-        surcharge,
-        total
-    }
+    return {
+      baseamount,
+      discount,
+      surcharge,
+      total,
+    };
   }
 
   let result = totalCalculator(weight, fee);
@@ -76,4 +76,8 @@ app.get("/api/envios", (req, res) => {
     recargo: result.surcharge,
     total: result.total,
   });
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
